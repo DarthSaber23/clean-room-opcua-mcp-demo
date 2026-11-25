@@ -1,0 +1,19 @@
+[package]
+name = "staleness-watchdog"
+description = "Deterministic OPC UA subscription-staleness watchdog state machine with a Tokio driver (synthetic demo)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+tokio = { workspace = true, features = ["time", "sync", "macros"] }
+thiserror.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["rt", "macros", "time", "sync", "test-util"] }
+
+[lints]
+workspace = true

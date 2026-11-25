@@ -1,0 +1,36 @@
+[workspace]
+resolver = "2"
+members = ["crates/staleness-watchdog", "crates/readonly-mcp"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Radityo Fajar Pamungkas"]
+repository = "https://github.com/DarthSaber23/clean-room-opcua-mcp-demo"
+publish = false
+
+[workspace.dependencies]
+# Deliberately tiny dependency surface: no OPC UA SDK, no MCP SDK.
+# The minimal protocol pieces are implemented in this repository.
+tokio = { version = "1.40", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+# "Pedantic-lite": the default set plus a handful of high-signal pedantic lints.
+all = { level = "warn", priority = -1 }
+unwrap_used = "warn"
+dbg_macro = "warn"
+todo = "warn"
+semicolon_if_nothing_returned = "warn"
+uninlined_format_args = "warn"
+redundant_closure_for_method_calls = "warn"
+cloned_instead_of_copied = "warn"
+needless_pass_by_value = "warn"
+doc_markdown = "warn"
